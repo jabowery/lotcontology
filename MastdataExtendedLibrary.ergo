@@ -1,0 +1,1455 @@
+
+mining::industry_sector.
+forestry_fishing::industry_sector.
+utilities::industry_sector.
+construction::industry_sector.
+manufacturing::industry_sector.
+naics:classification_standard.
+naics_1998:classification_standard.
+naics_1999:classification_standard.
+naics_2000:classification_standard.
+naics_2001:classification_standard.
+naics_2002:classification_standard.
+naics_2007:classification_standard.
+sic_1987:classification_standard.
+march_12::time_period.
+naics_2002::classification_standard.
+naics_2007::classification_standard.
+?E : private_nonfarm_establishment :- ?E : business_establishment, ?E[type -> private_nonfarm].
+?E : private_nonfarm_by_year :- ?E : private_nonfarm_establishment, ?E[year -> ?Y].
+?Instance : manufacturing_establishments_2007 :- ?Instance : manufacturing_establishments, ?Instance[classification_standard -> naics_2007].
+?Instance : manufacturing_establishments_2002 :- ?Instance : manufacturing_establishments, ?Instance[classification_standard -> naics_2002].
+?E : manufacturing_employment :- ?E : private_nonfarm_establishment, ?E[industry_sector -> manufacturing, classification_code -> 31, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+?Instance : manufacturing_employment_2002 :- ?Instance : manufacturing_employment, ?Instance[classification_standard -> naics_2002].
+?Instance : manufacturing_employment_base :- ?Instance : manufacturing_employment, ?Instance[version -> null].
+wholesale_trade::industry_sector.
+naics_42::classification_code.
+?Instance : manufacturing_employment_2007 :- ?Instance : manufacturing_employment, ?Instance[classification_standard -> naics_2007].
+?E : wholesale_trade_establishments :- ?E : private_nonfarm_establishment, ?E[industry_sector -> wholesale_trade, classification_code -> 42, year -> ?Y, classification_standard -> ?V].
+?Instance : wholesale_trade_establishments_base :- ?Instance : wholesale_trade_establishments, ?Instance[version -> null].
+?Instance : wholesale_trade_establishments_2002 :- ?Instance : wholesale_trade_establishments, ?Instance[classification_standard -> naics_2002].
+?Instance : wholesale_trade_establishments_2007 :- ?Instance : wholesale_trade_establishments, ?Instance[classification_standard -> naics_2007].
+?E : wholesale_trade_employment :- ?E : private_nonfarm_establishment, ?E[industry_sector -> wholesale_trade, classification_code -> 42, year -> ?Y, pay_period -> march_12].
+retail_trade::industry_sector.
+naics_44::classification_code.
+?E : wholesale_trade_employment :- ?E : private_nonfarm_establishment, ?E[industry_sector -> wholesale_trade, classification_code -> 42, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+?E : retail_trade_establishments :- ?E : private_nonfarm_establishment, ?E[industry_sector -> retail_trade, classification_code -> 44, year -> ?Y].
+?E : retail_trade_establishments :- ?E : private_nonfarm_establishment, ?E[industry_sector -> retail_trade, classification_code -> 44, year -> ?Y, classification_standard -> ?V].
+?Instance : retail_trade_establishments_base :- ?Instance : retail_trade_establishments, ?Instance[version -> null].
+?Instance : retail_trade_establishments_2002 :- ?Instance : retail_trade_establishments, ?Instance[classification_standard -> naics_2002].
+?Instance : retail_trade_establishments_2007 :- ?Instance : retail_trade_establishments, ?Instance[classification_standard -> naics_2007].
+?E : retail_trade_employment :- ?E : employment, ?E[industry_sector -> retail_trade, classification_code -> 44, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+?Instance : retail_trade_employment_base :- ?Instance : retail_trade_employment, ?Instance[version -> null].
+?Instance : retail_trade_employment_2002 :- ?Instance : retail_trade_employment, ?Instance[classification_standard -> naics_2002].
+transportation_warehousing::industry_sector.
+naics_48::classification_code.
+naics_49::classification_code.
+?E : transportation_warehousing_establishments :- ?E : business_establishment, ?E[industry_sector -> transportation_warehousing, classification_code -> {naics_48}].
+information::industry_sector.
+naics_51::classification_code.
+?E : transportation_warehousing_employment :- ?E : employment, ?E[industry_sector -> transportation_warehousing, classification_code -> {naics_48}].
+?E : information_establishments :- ?E : business_establishment, ?E[industry_sector -> information, classification_code -> 51, year -> ?Y, classification_standard -> ?V].
+?E : information_employment :- ?E : employment, ?E[industry_sector -> information, classification_code -> 51, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+finance_insurance::industry_sector.
+naics_52::classification_code.
+?E : finance_insurance_establishments :- ?E : business_establishment, ?E[industry_sector -> finance_insurance, classification_code -> 52, year -> ?Y, classification_standard -> ?V].
+?P : under_5_population :- ?P : resident_population, ?P[age_group -> under_5].
+?P : age_5_to_9_population :- ?P : resident_population, ?P[age_group -> age_5_to_9].
+?P : age_5_to_14_population :- ?P : resident_population, ?P[age_group -> age_5_to_14].
+?P : age_5_to_17_population :- ?P : resident_population, ?P[age_group -> age_5_to_17].
+?P : age_10_to_14_population :- ?P : resident_population, ?P[age_group -> age_10_to_14].
+?P : age_15_to_19_population :- ?P : resident_population, ?P[age_group -> age_15_to_19].
+?P : complete_count :- ?P : population_count, ?P[count_type -> complete].
+?P : estimate_count :- ?P : population_count, ?P[count_type -> estimate].
+?P : july_estimate :- ?P : population_count, ?P[count_type -> july_estimate].
+?P : april_complete :- ?P : population_count, ?P[count_type -> april_complete].
+?P : estimates_base :- ?P : population_count, ?P[count_type -> estimates_base].
+?M : year_2000 :- ?M : measured_count, ?M[year -> 2000].
+?M : year_2001 :- ?M : measured_count, ?M[year -> 2001].
+?M : year_2002 :- ?M : measured_count, ?M[year -> 2002].
+?M : year_2003 :- ?M : measured_count, ?M[year -> 2003].
+?M : year_2004 :- ?M : measured_count, ?M[year -> 2004].
+?M : year_2005 :- ?M : measured_count, ?M[year -> 2005].
+?M : year_2006 :- ?M : measured_count, ?M[year -> 2006].
+?M : year_2007 :- ?M : measured_count, ?M[year -> 2007].
+?M : year_2008 :- ?M : measured_count, ?M[year -> 2008].
+?M : year_2009 :- ?M : measured_count, ?M[year -> 2009].
+?M : year_2010 :- ?M : measured_count, ?M[year -> 2010].
+?E : finance_insurance_employment :- ?E : employment, ?E[industry_sector -> finance_insurance, classification_code -> 52, year -> ?Y, pay_period -> march_12].
+real_estate_rental::industry_sector.
+naics_53::classification_code.
+?E : finance_insurance_employment :- ?E : employment, ?E[industry_sector -> finance_insurance, classification_code -> 52, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+?E : real_estate_establishments :- ?E : business_establishment, ?E[industry_sector -> real_estate_rental, classification_code -> 53, year -> ?Y, classification_standard -> ?V].
+?E : real_estate_base :- ?E : business_establishment, ?E[industry_sector -> real_estate_rental, classification_code -> 53, year -> ?Y, classification_standard -> ?V].
+?E : real_estate_employment_base :- ?E : employment, ?E[industry_sector -> real_estate_rental, classification_code -> 53, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+professional_scientific::industry_sector.
+naics_54::classification_code.
+?E : prof_services_base :- ?E : business_establishment, ?E[industry_sector -> professional_scientific, classification_code -> 54, year -> ?Y].
+?E : prof_services_base :- ?E : business_establishment, ?E[industry_sector -> professional_scientific, classification_code -> 54, year -> ?Y, classification_standard -> ?V].
+?E : prof_services_employment :- ?E : employment, ?E[industry_sector -> professional_scientific, classification_code -> 54, year -> ?Y, pay_period -> march_12].
+management_companies::industry_sector.
+naics_55::classification_code.
+?E : prof_services_employment :- ?E : employment, ?E[industry_sector -> professional_scientific, classification_code -> 54, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+?E : mgmt_companies_base :- ?E : business_establishment, ?E[industry_sector -> management_companies, classification_code -> 55, year -> ?Y, classification_standard -> ?V].
+?E : mgmt_companies_employment :- ?E : employment, ?E[industry_sector -> management_companies, classification_code -> 55, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+admin_support_waste::industry_sector.
+naics_56::classification_code.
+?E : admin_support_base :- ?E : business_establishment, ?E[industry_sector -> admin_support_waste, classification_code -> 56, year -> ?Y, classification_standard -> ?V].
+?E : admin_support_employment :- ?E : employment, ?E[industry_sector -> admin_support_waste, classification_code -> 56, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+educational_services::industry_sector.
+naics_61::classification_code.
+?E : educational_base :- ?E : business_establishment, ?E[industry_sector -> educational_services, classification_code -> 61, year -> ?Y, classification_standard -> ?V].
+?E : educational_employment :- ?E : employment, ?E[industry_sector -> educational_services, classification_code -> 61, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+?P : under_18_population :- ?P : resident_population, ?P[age_group -> under_18].
+healthcare_social::industry_sector.
+naics_62::classification_code.
+?E : healthcare_base :- ?E : business_establishment, ?E[industry_sector -> healthcare_social, classification_code -> 62, year -> ?Y].
+?E : healthcare_establishment :- ?E : business_establishment, ?E[industry_sector -> healthcare_social, classification_code -> 62, year -> ?Y, classification_standard -> ?V].
+?E : healthcare_employment :- ?E : employment, ?E[industry_sector -> healthcare_social, classification_code -> 62, year -> ?Y, pay_period -> march_12].
+?E : healthcare_employment :- ?E : employment, ?E[industry_sector -> healthcare_social, classification_code -> 62, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+arts_entertainment::industry_sector.
+naics_71::classification_code.
+?E : arts_entertainment_establishment :- ?E : business_establishment, ?E[industry_sector -> arts_entertainment, classification_code -> 71, year -> ?Y, classification_standard -> ?V].
+?E : arts_entertainment_employment :- ?E : employment, ?E[industry_sector -> arts_entertainment, classification_code -> 71, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+accommodation_food_services::industry_sector.
+naics_72::classification_code.
+?E : accommodation_food_establishment :- ?E : business_establishment, ?E[industry_sector -> accommodation_food_services, classification_code -> 72, year -> ?Y].
+?E : accommodation_food_establishment :- ?E : business_establishment, ?E[industry_sector -> accommodation_food_services, classification_code -> 72, year -> ?Y, classification_standard -> ?V].
+?E : accommodation_food_employment :- ?E : employment, ?E[industry_sector -> accommodation_food_services, classification_code -> 72, year -> ?Y, pay_period -> march_12].
+?E : accommodation_food_employment :- ?E : employment, ?E[industry_sector -> accommodation_food_services, classification_code -> 72, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+other_services::industry_sector.
+naics_81::classification_code.
+?E : other_services_establishments :- ?E : private_nonfarm_establishment, ?E[industry_sector -> other_services, classification_code -> 81, year -> ?Y, classification_standard -> ?V].
+?E : other_services_employment :- ?E : employment, ?E[industry_sector -> other_services, classification_code -> 81, year -> ?Y, classification_standard -> ?V, pay_period -> march_12].
+sic_c::sic_code.
+sic_d::sic_code.
+sic::classification_system.
+naics_2002::classification_system.
+naics_2007::classification_system.
+?E : construction_establishments :- ?E : private_nonfarm_establishment, ?E[industry_sector -> construction, classification -> ?C, year -> ?Y].
+?E : construction_employment :- ?E : employment, ?E[industry_sector -> construction, classification -> ?C, year -> ?Y, pay_period -> march_12].
+?E : manufacturing_establishments :- ?E : private_nonfarm_establishment, ?E[industry_sector -> manufacturing, classification -> ?C, year -> ?Y].
+transportation_utilities::industry_sector.
+finance_insurance_real_estate::industry_sector.
+services::industry_sector.
+sic_e::sic_code.
+sic_f::sic_code.
+sic_g::sic_code.
+sic_h::sic_code.
+sic_i::sic_code.
+?P : total_population :- ?P : resident_population, ?P[age_group -> total].
+civilian_labor_force::labor_force_category.
+armed_forces::labor_force_category.
+?P : civilian_labor_force_base :- ?P : person, ?P[labor_force_status -> civilian_labor_force].
+?P : civilian_labor_force_by_year :- ?P : person, ?P[labor_force_status -> civilian_labor_force, year -> ?Y].
+employed::employment_status.
+unemployed::employment_status.
+?P : civilian_employed_by_year :- ?P : person, ?P[labor_force_status -> civilian_labor_force, employment_status -> employed, year -> ?Y].
+?P : civilian_unemployed_by_year :- ?P : person, ?P[labor_force_status -> civilian_labor_force, employment_status -> unemployed, year -> ?Y].
+?P: civilian_unemployment_count :- ?P:person, ?P[labor_force_status->civilian_labor_force, employment_status->unemployed, year->?Y].
+?Instance : civilian_unemployment_rate :- ?Instance : civilian_unemployment_count.
+violent_crime::crime_category.
+covid_case::health_condition.
+confirmed::case_status.
+?C : violent_crimes_base :- ?C : crime, ?C[type -> violent_crime].
+?C : violent_crimes_by_year :- ?C : crime, ?C[type -> violent_crime, year -> ?Y].
+?C : covid_cases_base :- ?C : covid_case, ?C[status -> confirmed].
+?C : covid_cases_by_year :- ?C : covid_case, ?C[status -> confirmed, year -> ?Y].
+known_to_police::reporting_status.
+?C : reported_violent_crimes :- ?C : crime, ?C[type -> violent_crime, reporting_status -> known_to_police].
+?C : reported_violent_crimes_by_year :- ?C : crime, ?C[type -> violent_crime, reporting_status -> known_to_police, year -> ?Y].
+?P : population_2000 :- ?P : resident_population, ?P[year -> 2000].
+?P : population_2001 :- ?P : resident_population, ?P[year -> 2001].
+?P : population_2002 :- ?P : resident_population, ?P[year -> 2002].
+?P : population_2003 :- ?P : resident_population, ?P[year -> 2003].
+?P : population_2004 :- ?P : resident_population, ?P[year -> 2004].
+?P : population_2005 :- ?P : resident_population, ?P[year -> 2005].
+?P : population_2006 :- ?P : resident_population, ?P[year -> 2006].
+?P : population_2007 :- ?P : resident_population, ?P[year -> 2007].
+?P : population_2008 :- ?P : resident_population, ?P[year -> 2008].
+?P : population_2009 :- ?P : resident_population, ?P[year -> 2009].
+violent_crime :: crime.
+murder_nonnegligent_manslaughter :: violent_crime.
+rape :: violent_crime.
+robbery :: violent_crime.
+aggravated_assault :: violent_crime.
+reported_crime :: crime.
+crime_year :: integer.
+known_crime :: reported_crime.
+known_crime[status -> known_to_police].
+known_murder :: murder_nonnegligent_manslaughter.
+known_murder[status -> known_to_police].
+known_rape :: rape.
+known_rape[status -> known_to_police].
+known_robbery :: robbery.
+known_robbery[status -> known_to_police].
+known_assault :: aggravated_assault.
+known_assault[status -> known_to_police].
+?P : age_18_to_44_population :- ?P : resident_population, ?P[age_group -> age_18_to_44].
+?P : age_18_and_over_population :- ?P : resident_population, ?P[age_group -> age_18_plus].
+?P : age_20_to_24_population :- ?P : resident_population, ?P[age_group -> age_20_to_24].
+property_crime :: crime.
+known_property :: property_crime.
+known_property[status -> known_to_police].
+burglary :: property_crime.
+known_burglary :: burglary.
+known_burglary[status -> known_to_police].
+larceny_theft :: property_crime.
+known_larceny :: larceny_theft.
+known_larceny[status -> known_to_police].
+motor_vehicle_theft :: property_crime.
+known_vehicle_theft :: motor_vehicle_theft.
+known_vehicle_theft[status -> known_to_police].
+school :: organization.
+public_school :: school.
+public_school[type -> public].
+school_year :: string.
+enrolled_student :: person.
+fall_enrollment :: enrolled_student.
+fall_enrollment[enrollment_term -> fall].
+public_school_student :: fall_enrollment.
+private_school :: school.
+private_school[type -> private].
+preprimary_school :: school.
+kindergarten :: preprimary_school.
+elementary_school :: school.
+high_school :: school.
+college :: school.
+public_school_student :: enrolled_student.
+private_school_student :: enrolled_student.
+prekindergarten :: preprimary_school.
+not_enrolled_student :: person.
+not_enrolled_student[age >= 3].
+elementary_grades :: integer.
+high_school_grades :: integer.
+kindergarten_student :: enrolled_student.
+elementary_student :: enrolled_student.
+high_school_student :: enrolled_student.
+college_student :: enrolled_student.
+undergraduate_student :: college_student.
+graduate_student :: college_student.
+professional_student :: college_student.
+public_college :: college.
+private_college :: college.
+public_college[type -> public].
+private_college[type -> private].
+undergraduate_program :: program.
+graduate_program :: program.
+professional_program :: program.
+prekindergarten_student :: enrolled_student.
+school[type -> {public, private}].
+elementary_grades_1_4_student :: elementary_student.
+elementary_grades_5_8_student :: elementary_student.
+high_school_student[grade_level -> {9,10,11,12}].
+enrolled_student[gender -> {male, female}].
+enrolled_student[age_years -> number].
+enrolled_student[grade_level -> number].
+enrolled_student[school_type -> {public, private}].
+?P : age_25_to_29_population :- ?P : resident_population, ?P[age_group -> age_25_to_29].
+prekindergarten_student[grade_level -> 0].
+not_enrolled_person[age_years -> number].
+not_enrolled_person[gender -> {male, female}].
+kindergarten_student[grade_level -> 0].
+enrolled_student[year -> number].
+not_enrolled_person[year -> number].
+graduate_professional_student :: college_student.
+person_25_plus[age_years -> number].
+person_25_plus[education_level -> {less_than_9th_grade, ninth_to_12th_no_diploma, high_school_graduate, some_college, associates_degree, bachelors_degree, graduate_degree}].
+person_25_plus[year -> number].
+person_25_plus[completed_years_education -> number].
+person_25_plus[education_level -> {less_than_9th_grade, ninth_to_12th_no_diploma, high_school_graduate, some_college_no_degree, associates_degree, bachelors_degree, graduate_degree}].
+person_25_plus[education_level -> {less_than_9th_grade, ninth_to_12th_no_diploma, high_school_graduate, some_college_no_degree, associates_degree, bachelors_degree, graduate_degree, professional_degree}].
+voter :: person.
+voter[year -> number].
+voter[voted_president -> boolean].
+voter[state -> symbol].
+dropout_age_person :: person.
+dropout_age_person[age_years -> {16,17,18,19}].
+dropout_age_person[year -> number].
+dropout_age_person[enrolled_status -> {enrolled, not_enrolled}].
+dropout_age_person[education_level -> {less_than_high_school, high_school_graduate, some_college}].
+voter[party_vote -> {democratic, republican, other}].
+voter[registered -> boolean].
+?P : age_25_to_34_population :- ?P : resident_population, ?P[age_group -> age_25_to_34].
+voter[vote_cast -> boolean].
+republican_voter :: voter.
+republican_voter[year -> number].
+republican_voter[party_vote -> republican].
+other_party_voter :: voter.
+other_party_voter[year -> number].
+other_party_voter[party_vote -> other].
+voter[specific_party -> symbol].
+other_party_voter[specific_party -> {perot_independent, perot_reform, nader_green, other_minor}].
+democratic_voter :: voter.
+democratic_voter[year -> number].
+democratic_voter[party_vote -> democratic].
+leading_party_voter :: voter.
+leading_party_voter[year -> number].
+leading_party_voter[party_vote -> {democratic, republican}].
+leading_party_voter[won_election -> boolean].
+employed_person :: person.
+employed_person[year -> number].
+employed_person[industry -> symbol].
+employed_person[classification_code -> string].
+employed_person[employment_status -> {full_time, part_time}].
+employed_person[state -> symbol].
+employment_change :: measure.
+employment_change[base_year -> number].
+employment_change[end_year -> number].
+employment_change[net_change -> number].
+employment_change[state -> symbol].
+industry_employment :: measure.
+industry_employment[year -> number].
+industry_employment[total_employed -> number].
+industry_employment[state -> symbol].
+farming_employment :: industry_employment.
+farming_employment[sector -> farming].
+agriculture_employment :: industry_employment.
+industry_employment[classification_code -> string].
+mining_employment :: industry_employment.
+utilities_employment :: industry_employment.
+construction_employment :: industry_employment.
+?P : age_30_to_34_population :- ?P : resident_population, ?P[age_group -> age_30_to_34].
+wholesale_trade_employment :: industry_employment.
+retail_trade_employment :: industry_employment.
+transport_warehouse_employment :: industry_employment.
+information_employment :: industry_employment.
+finance_insurance_employment :: industry_employment.
+professional_technical_employment :: industry_employment.
+management_companies_employment :: industry_employment.
+administrative_support_employment :: industry_employment.
+educational_services_employment :: industry_employment.
+healthcare_social_assistance_employment :: industry_employment.
+arts_entertainment_recreation_employment :: industry_employment.
+accommodation_food_services_employment :: industry_employment.
+other_services_employment :: industry_employment.
+?P : age_35_to_39_population :- ?P : resident_population, ?P[age_group -> age_35_to_39].
+?M : year_1997 :- ?M : measured_count, ?M[year -> 1997].
+sic_employment :: employment.
+all_industries_employment :: sic_employment.
+farming_employment :: sic_employment.
+ag_services_forestry_fishing_employment :: sic_employment.
+mining_employment :: sic_employment.
+construction_employment :: sic_employment.
+transportation_utilities_employment :: sic_employment.
+wholesale_trade_employment :: sic_employment.
+retail_trade_employment :: sic_employment.
+finance_insurance_real_estate_employment :: sic_employment.
+services_employment :: sic_employment.
+government_employment :: sic_employment.
+federal_civilian_employment :: government_employment.
+military_employment :: government_employment.
+state_local_employment :: government_employment.
+government_employment :: employment.
+federal_civilian_employment :: government_employment.
+military_employment :: government_employment.
+state_local_employment :: government_employment.
+state_government_employment :: state_local_employment.
+local_government_employment :: state_local_employment.
+medicare_enrollment :: healthcare_enrollment.
+hospital_insurance_enrollment :: medicare_enrollment.
+supplemental_medical_insurance_enrollment :: medicare_enrollment.
+total_medicare_enrollment :: medicare_enrollment.
+aged_medicare_enrollment :: medicare_enrollment.
+medicare_enrollee :: healthcare_participant.
+total_medicare_enrollee :: medicare_enrollee.
+aged_medicare_enrollee :: medicare_enrollee.
+disabled_medicare_enrollment :: medicare_enrollment.
+disabled_medicare_enrollee :: medicare_enrollee.
+medicare_enrollment_date :: enrollment_date.
+medicare_enrollment_type :: enrollment_type.
+hospital_insurance :: medicare_enrollment_type.
+supplemental_medical_insurance :: medicare_enrollment_type.
+physician :: healthcare_provider.
+nonfederal_physician :: physician.
+active_physician :: physician.
+inactive_physician :: physician.
+physician_status :: provider_status.
+federal_status :: provider_status.
+practice_status :: provider_status.
+unclassified_physician :: physician.
+total_physician :: physician.
+classification_status :: provider_status.
+health_insurance_coverage :: healthcare_coverage.
+insured_population :: population_group.
+uninsured_population :: population_group.
+child_population :: population_group.
+insurance_status :: coverage_status.
+age_group :: demographic_attribute.
+adult_population :: population_group.
+under_18_years :: age_group.
+age_18_to_64_years :: age_group.
+age_40_to_64_years :: age_group.
+middle_age_population :: adult_population.
+under_65_population :: population_group.
+under_65_years :: age_group.
+total_population :: population_group.
+sample_population :: population_group.
+complete_count_population :: population_group.
+hispanic_population :: population_group.
+hispanic_latino_population :: hispanic_population.
+female_population :: population_group.
+male_population :: population_group.
+sample_count :: count_method.
+complete_count :: count_method.
+count_method :: demographic_attribute.
+gender :: demographic_attribute.
+ethnicity :: demographic_attribute.
+census_year :: temporal_attribute.
+under_5_years :: age_group.
+age_5_to_14_years :: age_group.
+age_15_to_59_years :: age_group.
+age_60_to_64_years :: age_group.
+age_65_and_over :: age_group.
+?P : age_35_to_44_population :- ?P : resident_population, ?P[age_group -> age_35_to_44].
+?P : age_40_to_44_population :- ?P : resident_population, ?P[age_group -> age_40_to_44].
+age_65_to_74_years :: age_65_and_over.
+age_75_to_84_years :: age_65_and_over.
+age_85_and_over :: age_65_and_over.
+age_25_and_over :: age_group.
+elementary_education :: education_level.
+education_level :: demographic_attribute.
+less_than_ninth_grade :: education_level.
+some_high_school :: education_level.
+high_school_complete :: education_level.
+some_college :: education_level.
+college_graduate :: education_level.
+educational_attainment :: demographic_attribute.
+hispanic_latino :: ethnicity.
+male :: gender.
+female :: gender.
+over_25 :: age_group.
+less_than_ninth :: educational_attainment.
+ninth_to_twelfth :: educational_attainment.
+high_school_graduate :: educational_attainment.
+some_college_no_degree :: educational_attainment.
+associates_degree :: education_level.
+bachelors_degree :: education_level.
+graduate_degree :: education_level.
+associates_degree :: educational_attainment.
+bachelors_degree :: educational_attainment.
+graduate_professional :: educational_attainment.
+household_type :: demographic_attribute.
+family_household :: household_type.
+nonfamily_household :: household_type.
+married_couple_household :: family_household.
+male_householder_no_wife :: family_household.
+female_householder_no_husband :: family_household.
+living_alone :: nonfamily_household.
+not_living_alone :: nonfamily_household.
+year_2000 :: census_year.
+years_2005_2009 :: census_year.
+household_relationship :: demographic_attribute.
+relative :: household_relationship.
+nonrelative :: household_relationship.
+year_1980 :: census_year.
+year_1999 :: census_year.
+income_range :: demographic_attribute.
+income_under_10k :: income_range.
+income_10k_to_15k :: income_range.
+income_15k_to_20k :: income_range.
+income_20k_to_25k :: income_range.
+income_25k_to_30k :: income_range.
+income_30k_to_35k :: income_range.
+income_35k_to_40k :: income_range.
+income_40k_to_45k :: income_range.
+income_45k_to_50k :: income_range.
+income_50k_plus :: income_range.
+income_50k_to_60k :: income_range.
+income_50k_to_75k :: income_range.
+income_60k_to_75k :: income_range.
+income_75k_to_100k :: income_range.
+income_100k_to_125k :: income_range.
+income_125k_to_150k :: income_range.
+income_100k_to_200k :: income_range.
+income_150k_to_200k :: income_range.
+income_200k_plus :: income_range.
+hispanic_household :: household.
+latino_household :: hispanic_household.
+income_less_10k :: income_range.
+period_1989 :: time_period.
+period_1990 :: time_period.
+period_1999 :: time_period.
+period_2000 :: time_period.
+period_2005_2009 :: time_period.
+income_15k_to_19k :: income_range.
+income_15k_to_24k :: income_range.
+income_20k_to_24k :: income_range.
+income_25k_to_29k :: income_range.
+income_25k_to_34k :: income_range.
+income_30k_to_34k :: income_range.
+income_35k_to_39k :: income_range.
+income_35k_to_49k :: income_range.
+income_40k_to_44k :: income_range.
+income_45k_to_49k :: income_range.
+income_50k_to_59k :: income_range.
+income_50k_to_74k :: income_range.
+income_60k_to_74k :: income_range.
+income_75k_to_99k :: income_range.
+income_100k_plus :: income_range.
+income_100k_to_124k :: income_100k_plus.
+income_100k_to_199k :: income_100k_plus.
+income_125k_to_149k :: income_100k_plus.
+income_150k_to_199k :: income_100k_plus.
+period_1970 :: time_period.
+period_1980 :: time_period.
+elderly_household :: household.
+period_2010 :: time_period.
+has_elderly_residents :: household_attribute.
+family_household :: household.
+has_children_under_18 :: household_attribute.
+has_own_children_under_18 :: has_children_under_18.
+male_householder_family :: family_household.
+no_spouse_present :: household_attribute.
+no_wife_present :: no_spouse_present.
+female_householder_family :: family_household.
+no_husband_present :: no_spouse_present.
+has_persons_under_18 :: household_attribute.
+nonfamily_household :: household.
+one_person_household :: nonfamily_household.
+elderly_one_person_household :: one_person_household.
+female_one_person_household :: one_person_household.
+male_one_person_household :: one_person_household.
+elderly_householder :: household_attribute.
+?P : age_45_to_49_population :- ?P : resident_population, ?P[age_group -> age_45_to_49].
+?H : households_1970 :- ?H : household, ?H[year -> 1970].
+?H : households_1980 :- ?H : household, ?H[year -> 1980].
+?H : households_1990 :- ?H : household, ?H[year -> 1990].
+?H : households_2000 :- ?H : household, ?H[year -> 2000].
+?H : households_2005_2009 :- ?H : household, ?H[year -> ?Y].
+?H : households_2010 :- ?H : household, ?H[year -> 2010].
+married_couple_household :: household.
+married_couple_with_children :: married_couple_household.
+married_couple_without_children :: married_couple_household.
+male_householder_no_spouse :: household.
+male_householder_no_spouse_with_children :: male_householder_no_spouse.
+male_householder_no_spouse_without_children :: male_householder_no_spouse.
+female_householder_no_spouse :: household.
+female_householder_no_spouse_with_children :: female_householder_no_spouse.
+female_householder_no_spouse_without_children :: female_householder_no_spouse.
+two_person_household :: family_household.
+three_person_household :: family_household.
+four_person_household :: family_household.
+five_person_household :: family_household.
+six_person_household :: family_household.
+seven_plus_person_household :: family_household.
+male_living_alone :: living_alone.
+female_living_alone :: living_alone.
+elderly_living_alone :: living_alone.
+male_elderly_living_alone :: male_living_alone.
+female_elderly_living_alone :: female_living_alone.
+two_person_household :: household.
+three_person_household :: household.
+four_person_household :: household.
+five_person_household :: household.
+six_person_household :: household.
+seven_plus_person_household :: household.
+household_with_children :: household.
+household_without_children :: household.
+person :: object.
+household_person :: person.
+family_household_person :: household_person.
+householder :: family_household_person.
+spouse :: family_household_person.
+elderly_person :: person.
+household[persons_count => integer].
+household[has_elderly => boolean].
+child :: family_household_person.
+other_relative :: family_household_person.
+nonrelative :: family_household_person.
+household[year => integer].
+household[has_spouse => boolean].
+household[has_child => boolean].
+household[has_other_relative => boolean].
+household[has_nonrelative => boolean].
+time_period :: object.
+year_1980 :: time_period.
+year_1990 :: time_period.
+year_2000 :: time_period.
+?P : age_45_to_54_population :- ?P : resident_population, ?P[age_group -> age_45_to_54].
+?P : age_45_to_64_population :- ?P : resident_population, ?P[age_group -> age_45_to_64].
+?P : age_50_to_54_population :- ?P : resident_population, ?P[age_group -> age_50_to_54].
+nonfamily_household_person :: household_person.
+householder :: household_person.
+male_householder :: householder.
+female_householder :: householder.
+household :: object.
+household[householder_gender => symbol].
+housing_unit :: object.
+housing_unit[year => integer].
+housing_unit[month => integer].
+housing_estimate :: object.
+base_estimate :: housing_estimate. 
+point_estimate :: housing_estimate.
+net_change_estimate :: housing_estimate.
+housing_estimate[value => number].
+housing_estimate[year => integer].
+housing_estimate[month => integer].
+housing_estimate[estimate_type => symbol].
+housing_estimate[base_year => integer].
+housing_estimate[is_revised => boolean].
+percent_change_estimate :: housing_estimate.
+housing_estimate[base_month => integer].
+complete_count_unit :: housing_unit.
+estimated_unit :: housing_unit.
+housing_unit[count => integer].
+housing_unit[count_type => symbol].
+housing_unit[is_revised => boolean].
+detached_unit :: housing_unit.
+attached_unit :: housing_unit.
+housing_unit[structure_type => symbol].
+housing_unit[sample_type => {complete, sample, estimate}].
+housing_unit[period_type => {point, range}].
+housing_unit[start_year => integer].
+housing_unit[end_year => integer].
+two_unit :: housing_unit.
+three_four_unit :: housing_unit.
+five_nine_unit :: housing_unit.
+housing_unit[units_count => integer].
+ten_nineteen_unit :: housing_unit.
+twenty_fortynine_unit :: housing_unit.
+fifty_plus_unit :: housing_unit.
+multi_dwelling_unit :: housing_unit.
+mobile_home :: housing_unit.
+boat_rv_van :: housing_unit.
+housing_unit[build_year => integer].
+housing_unit[build_period => {before_1990, y1990_1994, y1995_1998, y1999_2000, y2000_2004, y2005_later}].
+?P : population_2010 :- ?P : resident_population, ?P[year -> 2010].
+housing_unit[build_period => {before_1970, y1970_1979, y1980_1989, y1985_1988, y1989_1990, y1990_later}].
+housing_unit[build_period => {before_1939, y1940_1949, y1950_1959, y1960_1969}].
+housing_unit[rooms_count => integer].
+housing_unit[median_rooms => decimal].
+one_room_unit :: housing_unit.
+two_room_unit :: housing_unit.
+three_room_unit :: housing_unit.
+four_room_unit :: housing_unit.
+five_room_unit :: housing_unit.
+six_room_unit :: housing_unit.
+seven_room_unit :: housing_unit.
+eight_room_unit :: housing_unit.
+nine_plus_room_unit :: housing_unit.
+housing_unit[tenure_type => string].
+owner_occupied :: housing_unit.
+renter_occupied :: housing_unit.
+housing_unit[household_size => decimal].
+housing_unit[move_in_year => integer].
+housing_unit[move_in_period => string].
+housing_unit[occupancy_status => string].
+occupied :: housing_unit.
+vacant :: housing_unit.
+housing_unit[householder_race => string].
+housing_unit[householder_ethnicity => string].
+black_householder :: occupied.
+hispanic_householder :: occupied.
+housing_unit[census_year => integer].
+housing_unit[persons_per_room => decimal].
+housing_unit[survey_type => string].
+normal_density :: occupied.
+overcrowded :: occupied.
+severely_overcrowded :: overcrowded.
+moderately_overcrowded :: overcrowded.
+extremely_overcrowded :: overcrowded.
+housing_unit[plumbing_facilities => string].
+housing_unit[kitchen_facilities => string].
+housing_unit[telephone_service => string].
+housing_unit[heating_fuel => string].
+complete_plumbing :: housing_unit.
+incomplete_plumbing :: housing_unit.
+complete_kitchen :: housing_unit.
+incomplete_kitchen :: housing_unit.
+has_telephone :: housing_unit.
+no_telephone :: housing_unit.
+utility_gas_heat :: housing_unit.
+electric_heat :: housing_unit.
+fuel_oil_heat :: housing_unit.
+bottled_gas_heat :: housing_unit.
+occupied_unit :: housing_unit.
+vacant_unit :: housing_unit.
+?P : age_55_to_59_population :- ?P : resident_population, ?P[age_group -> age_55_to_59].
+coal_heat :: housing_unit.
+wood_heat :: housing_unit.
+solar_heat :: housing_unit.
+other_fuel_heat :: housing_unit.
+no_fuel_heat :: housing_unit.
+housing_unit[vehicles_available => integer].
+no_vehicle_unit :: occupied_unit.
+one_vehicle_unit :: occupied_unit.
+two_vehicle_unit :: occupied_unit.
+three_vehicle_unit :: occupied_unit.
+multi_vehicle_unit :: occupied_unit.
+housing_unit[ownership_status => string].
+owner_occupied :: occupied_unit.
+renter_occupied :: occupied_unit.
+four_vehicle_unit :: occupied_unit.
+five_plus_vehicle_unit :: occupied_unit.
+black_householder :: owner_occupied.
+african_american_alone_householder :: owner_occupied.
+housing_unit[value => number].
+hispanic_householder :: owner_occupied.
+hispanic_latino_householder :: owner_occupied.
+specified_owner_occupied :: owner_occupied.
+value_20k_to_30k :: specified_owner_occupied.
+value_30k_to_40k :: specified_owner_occupied.
+value_40k_to_50k :: specified_owner_occupied.
+value_under_50k :: specified_owner_occupied.
+value_50k_to_100k :: specified_owner_occupied.
+value_100k_to_150k :: specified_owner_occupied.
+value_150k_to_200k :: specified_owner_occupied.
+value_200k_to_300k :: specified_owner_occupied.
+value_300k_to_400k :: specified_owner_occupied.
+value_200k_plus :: specified_owner_occupied.
+?P : age_60_to_64_population :- ?P : resident_population, ?P[age_group -> age_60_to_64].
+?P : population_1980 :- ?P : resident_population, ?P[year -> 1980].
+?P : population_1990 :- ?P : resident_population, ?P[year -> 1990].
+value_300k_to_500k :: specified_owner_occupied.
+value_400k_to_500k :: specified_owner_occupied.
+value_500k_plus :: specified_owner_occupied.
+value_500k_to_750k :: specified_owner_occupied.
+value_500k_to_1m :: specified_owner_occupied.
+value_750k_to_1m :: specified_owner_occupied.
+value_1m_plus :: specified_owner_occupied.
+mortgage_status :: housing_attribute.
+with_mortgage :: mortgage_status.
+without_mortgage :: mortgage_status.
+black_householder :: demographic_attribute.
+black_alone_householder :: black_householder.
+housing_1980 :: temporal_attribute.
+housing_1990 :: temporal_attribute.
+housing_2000 :: temporal_attribute.
+housing_2005_2009 :: temporal_attribute.
+housing_2010 :: temporal_attribute.
+hispanic_householder :: demographic_attribute.
+hispanic_latino_householder :: hispanic_householder.
+plumbing_facilities :: housing_attribute.
+complete_plumbing :: plumbing_facilities.
+lacking_plumbing :: plumbing_facilities.
+complete_count :: data_collection.
+sample_count :: data_collection.
+contract_rent :: housing_attribute.
+rent_under_100 :: contract_rent.
+rent_100_149 :: contract_rent.
+rent_100_199 :: contract_rent.
+rent_150_199 :: contract_rent.
+rent_200_249 :: contract_rent.
+rent_200_299 :: contract_rent.
+rent_250_299 :: contract_rent.
+rent_300_349 :: contract_rent.
+rent_300_399 :: contract_rent.
+rent_350_399 :: contract_rent.
+rent_400_449 :: contract_rent.
+rent_400_499 :: contract_rent.
+rent_450_499 :: contract_rent.
+rent_500_549 :: contract_rent.
+rent_500_599 :: contract_rent.
+rent_550_599 :: contract_rent.
+rent_600_649 :: contract_rent.
+rent_600_699 :: contract_rent.
+rent_650_699 :: contract_rent.
+rent_700_749 :: contract_rent.
+rent_700_799 :: contract_rent.
+rent_750_799 :: contract_rent.
+rent_800_899 :: contract_rent.
+rent_900_999 :: contract_rent.
+rent_1000_plus :: contract_rent.
+rent_less_100 :: contract_rent.
+rent_1000_1249 :: contract_rent.
+rent_1000_1499 :: contract_rent.
+rent_1250_1499 :: contract_rent.
+rent_1500_1999 :: contract_rent.
+rent_2000_plus :: contract_rent.
+no_cash_rent :: contract_rent.
+gross_rent :: housing_attribute.
+rent_under_100 :: gross_rent.
+rent_100_149 :: gross_rent.
+rent_100_199 :: gross_rent.
+rent_150_199 :: gross_rent.
+rent_200_249 :: gross_rent.
+rent_200_299 :: gross_rent.
+year_2005_2009 :: time_period.
+specified_unit :: housing_attribute.
+rent_250_299 :: gross_rent.
+rent_300_349 :: gross_rent.
+rent_300_399 :: gross_rent.
+rent_350_399 :: gross_rent.
+rent_400_449 :: gross_rent.
+rent_400_499 :: gross_rent.
+rent_450_499 :: gross_rent.
+rent_500_plus :: gross_rent.
+rent_500_549 :: gross_rent.
+rent_550_599 :: gross_rent.
+rent_500_599 :: gross_rent.
+rent_600_649 :: gross_rent.
+rent_650_699 :: gross_rent.
+rent_700_749 :: gross_rent.
+rent_750_799 :: gross_rent.
+rent_700_999 :: gross_rent.
+rent_700_799 :: gross_rent.
+rent_800_899 :: gross_rent.
+rent_900_999 :: gross_rent.
+rent_1000_plus :: gross_rent.
+rent_1000_1249 :: gross_rent.
+rent_1000_1499 :: gross_rent.
+rent_1250_1499 :: gross_rent.
+rent_1500_1999 :: gross_rent.
+rent_2000_plus :: gross_rent.
+household_income :: household_attribute.
+income_under_10k :: household_income.
+income_10k_15k :: household_income.
+income_adjusted_2009 :: household_attribute.
+year_1979 :: time_period.
+year_1989 :: time_period.
+year_1999 :: time_period.
+income_15k_20k :: household_income.
+income_20k_25k :: household_income.
+income_25k_30k :: household_income.
+income_30k_35k :: household_income.
+income_35k_40k :: household_income.
+household_with_income :: household.
+income_40k_45k :: household_income.
+income_45k_50k :: household_income.
+income_40k_50k :: household_income.
+income_50k_75k :: household_income.
+income_50k_60k :: household_income.
+income_60k_75k :: household_income.
+income_75k_plus :: household_income.
+income_75k_100k :: household_income.
+income_100k_125k :: household_income.
+income_125k_150k :: household_income.
+income_150k_plus :: household_income.
+income_150k_200k :: household_income.
+income_200k_plus :: household_income.
+household_with_earnings :: household.
+?P : age_65_to_69_population :- ?P : resident_population, ?P[age_group -> age_65_to_69].
+?M : year_1980 :- ?M : measured_count, ?M[year -> 1980].
+?M : year_1990 :- ?M : measured_count, ?M[year -> 1990].
+?P : resident_population :- ?P : population, ?P[type -> resident].
+?E : has_payroll :- ?E : business_establishment, ?E[payroll_status -> with_payroll].
+social_security_income :: income_type.
+supplemental_security_income :: income_type.
+public_assistance_income :: income_type.
+cash_public_assistance_income :: public_assistance_income.
+retirement_income :: income_type.
+food_stamp_benefits :: income_type.
+family_with_income :: household.
+income_40k_to_50k :: income_range.
+income_type :: class.
+income_range :: income_type.
+family_income :: income_type.
+family :: class.
+family[income_range => income_range, time_period => time_period].
+income_75k_plus :: income_range.
+income_100k_to_124k :: income_range.
+income_125k_to_149k :: income_range.
+income_150k_plus :: income_range.
+income_150k_to_199k :: income_range.
+household :: class.
+family :: household.
+household[income_range => income_range, time_period => time_period].
+?P : age_65_to_74_population :- ?P : resident_population, ?P[age_group -> age_65_to_74].
+worker :: class.
+fulltime_worker :: worker.
+male_worker :: fulltime_worker.
+female_worker :: fulltime_worker.
+worker[earnings => number, time_period => time_period].
+population :: class.
+population[count => number, time_period => time_period].
+poverty_population :: population.
+year_1997 :: time_period.
+year_1998 :: time_period.
+year_2001 :: time_period.
+year_2002 :: time_period.
+year_2003 :: time_period.
+year_2004 :: time_period.
+year_2005 :: time_period.
+year_2006 :: time_period.
+poverty_population[count => number, time_period => time_period].
+year_1995 :: time_period.
+year_2007 :: time_period.
+year_2008 :: time_period.
+year_2009 :: time_period.
+poverty_rate :: class.
+poverty_rate[percentage => number, time_period => time_period].
+under_18_population :: population.
+under_18_poverty_population :: poverty_population.
+under_18_poverty_rate :: poverty_rate.
+related_children_5_17 :: population.
+related_children_5_17_poverty :: poverty_population.
+related_children_5_17_poverty_rate :: poverty_rate.
+tax_return :: class.
+tax_return[count => number, time_period => time_period].
+tax_exemption :: class.
+tax_exemption[count => number, time_period => time_period, status => string].
+?P : age_65_plus_population :- ?P : resident_population, ?P[age_group -> age_65_plus].
+employment_status :: class.
+employed :: employment_status.
+unemployed :: employment_status.
+not_in_labor_force :: employment_status.
+working_age_population :: population.
+working_age_population[employment_status => employment_status].
+male_working_age_population :: working_age_population.
+religious_population :: population.
+jewish_population :: religious_population.
+tax_exemption_living :: tax_exemption.
+female_working_age_population :: working_age_population.
+labor_force_population :: working_age_population.
+male_labor_force :: labor_force_population.
+female_labor_force :: labor_force_population.
+armed_forces :: labor_force_population.
+male_armed_forces :: armed_forces.
+female_armed_forces :: armed_forces.
+civilian_labor_force :: labor_force_population.
+male_civilian_labor_force :: civilian_labor_force.
+female_civilian_labor_force :: civilian_labor_force.
+family_worker_status :: class.
+no_workers :: family_worker_status.
+multiple_workers :: family_worker_status.
+family[worker_status => family_worker_status].
+worker[age => number].
+worker[work_location => location].
+work_location :: class.
+in_state :: work_location.
+out_of_state :: work_location.
+location :: class.
+state :: location.
+residence_state :: state.
+county :: location.
+residence_county :: county.
+other_county :: county.
+worker[residence_county => county].
+worker[work_county => county].
+time_period :: class.
+worker[time_period => time_period].
+transportation_mode :: class.
+car_truck_van :: transportation_mode.
+drove_alone :: car_truck_van.
+carpooled :: car_truck_van.
+worker[transport_mode => transportation_mode].
+worker[work_location => work_location].
+public_transport :: transportation_mode.
+bus_trolley_bus :: public_transport.
+streetcar_trolley :: public_transport.
+taxicab :: public_transport.
+subway_elevated :: public_transport.
+railroad :: public_transport.
+ferryboat :: public_transport.
+motorcycle :: transportation_mode.
+bicycle :: transportation_mode.
+walked :: transportation_mode.
+other_means :: transportation_mode.
+worked_at_home :: transportation_mode.
+industry :: class.
+agriculture_forestry_fishing_mining :: industry.
+construction :: industry.
+manufacturing :: industry.
+wholesale_trade :: industry.
+employed_person :: class.
+civilian_employed :: employed_person.
+employed_person[
+    industry => industry,
+    time_period => time_period,
+    age_years => integer
+].
+retail_trade :: industry.
+transportation_warehousing_utilities :: industry.
+information_sector :: industry.
+finance_insurance_realestate :: industry.
+professional_scientific_management :: industry.
+education_health_social :: industry.
+arts_entertainment_recreation :: industry.
+accommodation_food_services :: industry.
+other_services :: industry.
+public_administration :: industry.
+occupation :: class.
+management_professional :: occupation.
+service_occupation :: occupation.
+sales_office :: occupation.
+farming_fishing_forestry :: occupation.
+construction_extraction :: occupation.
+production_transportation :: occupation.
+worker_class :: class.
+private_wage_salary :: worker_class.
+private_for_profit :: worker_class.
+private_not_for_profit :: worker_class.
+civilian_worker :: worker_class.
+?P : age_70_74_population :- ?P : resident_population, ?P[age_group -> age_70_74].
+government_worker :: worker_class.
+total_government :: government_worker.
+local_government :: government_worker.
+state_government :: government_worker.
+federal_government :: government_worker.
+self_employed :: worker_class.
+unpaid_family :: worker_class.
+fiscal_year :: class.
+fy_1972 :: fiscal_year.
+fy_1977 :: fiscal_year.
+fy_1982 :: fiscal_year.
+fy_1987 :: fiscal_year.
+fy_1992 :: fiscal_year.
+fy_1997 :: fiscal_year.
+fy_2002 :: fiscal_year.
+employment_type :: class.
+full_time :: employment_type.
+part_time :: employment_type.
+total :: employment_type.
+fy_2007 :: fiscal_year.
+fte :: employment_type.
+naics_sector :: class.
+manufacturing :: naics_sector.
+production_worker :: employment_type.
+all_employee :: employment_type.
+size_class :: class.
+all_sizes :: size_class.
+twenty_plus :: size_class.
+business_establishment :: class.
+nonemployer_establishment :: business_establishment.
+manufacturing_establishment :: business_establishment.
+under_twenty :: size_class.
+industry_classification :: class.
+naics :: industry_classification.
+sic :: industry_classification.
+agriculture_forestry_fishing :: naics.
+utilities :: naics.
+construction :: naics.
+?P : age_75_79_population :- ?P : resident_population, ?P[age_group -> age_75_79].
+manufacturing :: naics.
+wholesale_trade :: naics.
+retail_trade :: naics.
+transportation_warehousing :: naics.
+information :: naics.
+finance_insurance :: naics.
+real_estate_rental_leasing :: naics.
+professional_scientific_technical :: naics.
+administrative_support_waste_management :: naics.
+educational_services :: naics.
+health_care_social_assistance :: naics.
+arts_entertainment_recreation :: naics.
+accommodation_food_services :: naics.
+other_services :: naics.
+bea_population :: population.
+population_rank :: population.
+net_population_change :: population.
+percent_change :: population.
+density_measure :: population.
+urban_population :: population.
+rural_population :: population.
+rural_farm_population :: rural_population.
+race_population :: population.
+?P : age_75_84_population :- ?P : resident_population, ?P[age_group -> age_75_84].
+?P : age_75_plus_population :- ?P : resident_population, ?P[age_group -> age_75_plus].
+?P : age_80_84_population :- ?P : resident_population, ?P[age_group -> age_80_84].
+white_alone_population :: white_population.
+black_population :: race_population.
+black_alone_population :: black_population.
+american_indian_alone_population :: american_indian_population.
+asian_pacific_population :: race_population.
+asian_indian_population :: asian_pacific_population.
+chinese_population :: asian_pacific_population.
+japanese_population :: asian_pacific_population.
+korean_population :: asian_pacific_population.
+vietnamese_population :: asian_pacific_population.
+pacific_islander_population :: race_population.
+pacific_islander_alone_population :: pacific_islander_population.
+other_race_population :: race_population.
+other_race_alone_population :: other_race_population.
+hispanic_population :: population.
+mexican_population :: hispanic_population.
+puerto_rican_population :: hispanic_population.
+cuban_population :: hispanic_population.
+marital_status_population :: male_population.
+never_married_male_population :: marital_status_population.
+married_male_population :: marital_status_population.
+married_spouse_present_male_population :: married_male_population.
+married_spouse_absent_male_population :: married_male_population.
+married_spouse_absent_other_male_population :: married_spouse_absent_male_population.
+married_spouse_absent_separated_male_population :: married_spouse_absent_male_population.
+separated_male_population :: marital_status_population.
+?P : pop_2000 :- ?P : population_count, ?P[year -> 2000].
+?P : pop_2001 :- ?P : population_count, ?P[year -> 2001].
+?P : pop_2002 :- ?P : population_count, ?P[year -> 2002].
+?P : pop_2003 :- ?P : population_count, ?P[year -> 2003].
+?P : pop_2004 :- ?P : population_count, ?P[year -> 2004].
+?P : pop_2005 :- ?P : population_count, ?P[year -> 2005].
+?P : pop_2006 :- ?P : population_count, ?P[year -> 2006].
+?P : pop_2007 :- ?P : population_count, ?P[year -> 2007].
+?P : pop_2008 :- ?P : population_count, ?P[year -> 2008].
+divorced_male_population :: marital_status_population.
+female_population :: population.
+female_marital_status_population :: female_population.
+married_female_population :: female_marital_status_population.
+married_except_separated_female_population :: married_female_population.
+married_spouse_present_female_population :: married_female_population.
+married_spouse_absent_female_population :: married_female_population.
+married_spouse_absent_other_female_population :: married_spouse_absent_female_population.
+separated_female_population :: female_marital_status_population.
+widowed_female_population :: female_marital_status_population.
+divorced_female_population :: female_marital_status_population.
+native_population :: resident_population.
+native_state_resident_population :: native_population.
+us_born_population :: resident_population.
+state_born_population :: us_born_population.
+foreign_born_population :: resident_population.
+other_state_born_population :: us_born_population.
+native_outside_us_population :: native_population.
+citizenship_population :: population.
+naturalized_citizen_population :: citizenship_population.
+us_citizen_population :: citizenship_population.
+us_born_citizen_population :: us_citizen_population.
+puerto_rico_island_born_citizen_population :: us_citizen_population.
+foreign_born_american_parent_citizen_population :: us_citizen_population.
+non_us_citizen_population :: citizenship_population.
+population_5_plus :: population.
+population_1_plus :: population.
+same_house_resident :: population.
+different_house_same_county_resident :: population.
+residence_year_status(population, year, status).
+different_county_same_state_resident :: population.
+different_state_resident :: population.
+different_state_abroad_resident :: population.
+northeast_region :: geographic_region.
+north_central_region :: geographic_region.
+midwest_region :: geographic_region.
+south_region :: geographic_region.
+residence_region_status(population, year, region, status).
+abroad_resident :: population.
+west_region :: geographic_region.
+citizenship_status :: status.
+naturalized_citizen :: citizenship_status.
+non_citizen :: citizenship_status.
+entry_year_status(population, year, citizenship_status).
+?P : age_85_plus_population :- ?P : resident_population, ?P[age_group -> age_85_plus].
+?P : pop_2009 :- ?P : population_count, ?P[year -> 2009].
+?P : pop_2010 :- ?P : population_count, ?P[year -> 2010].
+entry_period :: temporal_period.
+entry_2000_later :: entry_period.
+entry_1990_1999 :: entry_period.
+entry_1980_1989 :: entry_period.
+native_population :: population.
+foreign_born_population :: population.
+entry_period_status(population, entry_period, year, citizenship_status).
+entry_before_1980 :: entry_period.
+citizenship_status :: demographic_attribute.
+not_citizen :: citizenship_status.
+language_spoken_home :: demographic_attribute.
+period_2005_2009 :: temporal_period.
+english_only :: language_spoken_home.
+other_than_english :: language_spoken_home.
+spanish_language :: other_than_english.
+language_population(population, language_spoken_home, temporal_period).
+population_5plus :: population.
+period_1980 :: temporal_period.
+period_1990 :: temporal_period.
+period_2000 :: temporal_period.
+indo_european_language :: other_than_english.
+asian_pacific_language :: other_than_english.
+other_language :: other_than_english.
+has_disability :: population_characteristic.
+no_disability :: population_characteristic.
+civilian_noninst :: population_type.
+age_5_20 :: age_group.
+age_21_64 :: age_group.
+group_quarters :: population_type.
+institutionalized :: group_quarters.
+age_65_plus :: age_group.
+not_employed :: employment_status.
+complete_count :: count_type.
+sample_count :: count_type.
+period_2010 :: temporal_period.
+correctional :: institutionalized.
+nursing_home :: institutionalized.
+other_institution :: institutionalized.
+age_under_18 :: age_group.
+age_18_64 :: age_group.
+noninstitutionalized :: group_quarters.
+college_dorm :: noninstitutionalized.
+military_quarters :: noninstitutionalized.
+period_1971 :: temporal_period.
+resident_population :: population_type.
+period_1972 :: temporal_period.
+period_1973 :: temporal_period.
+period_1974 :: temporal_period.
+period_1975 :: temporal_period.
+period_1976 :: temporal_period.
+period_1977 :: temporal_period.
+period_1978 :: temporal_period.
+period_1979 :: temporal_period.
+period_1981 :: temporal_period.
+period_1982 :: temporal_period.
+?F : farms :- ?F : agricultural_establishment, ?F[type -> farm].
+?F : individual_family_farms :- ?F : farm, ?F[ownership -> individual_family].
+?F : naics_farms :- ?F : farm, ?F[classification_system -> naics].
+?C : adjusted_count :- ?C : count_measure, ?C[adjustment_status -> adjusted].
+?C : not_adjusted_count :- ?C : count_measure, ?C[adjustment_status -> not_adjusted].
+period_1971..period_1991 :: temporal_period.
+period_1971..period_2000 :: temporal_period.
+july_estimate :: estimate_type.
+april_base_estimate :: estimate_type.
+period_1971..period_2009 :: temporal_period.
+net_change :: change_type.
+percent_change :: change_type.
+births :: population_component.
+deaths :: population_component.
+migration :: population_component.
+july_to_july_interval :: time_interval.
+april_to_july_interval :: time_interval.
+international_migration :: migration.
+domestic_migration :: migration.
+?F : under_10_acre_farms :- ?F : farm, ?F[size_acres -> ?S].
+?F : farms_10_to_49_acres :- ?F : farm, ?F[size_acres -> ?S].
+?F : farms_1997 :- ?F : farm, ?F[year -> 1997].
+?F : farms_2002 :- ?F : farm, ?F[year -> 2002].
+?F : farms_2007 :- ?F : farm, ?F[year -> 2007].
+natural_increase :: change_type.
+cumulative_estimate :: estimate_type.
+april_2000_july_base :: cumulative_estimate.
+net_migration_total :: migration.
+net_international_migration :: international_migration.
+poverty_status_determined :: population_characteristic.
+poverty_status_period :: temporal_characteristic.
+single_year_poverty :: poverty_status_period.
+five_year_poverty :: poverty_status_period.
+net_domestic_migration :: domestic_migration.
+below_poverty :: poverty_status.
+above_poverty :: poverty_status.
+at_or_above_poverty :: poverty_status.
+age_18_plus :: age_group.
+period_1969..period_2009 :: temporal_period.
+age_18_to_64 :: age_group.
+period_1989 :: temporal_period.
+period_1999 :: temporal_period.
+period_2005_2009 :: temporal_period[type -> five_year_poverty].
+period_1979 :: temporal_period[type -> single_year_poverty].
+period_1989 :: temporal_period[type -> single_year_poverty].
+period_1999 :: temporal_period[type -> single_year_poverty].
+related_child :: population_characteristic.
+age_5_to_17 :: age_group.
+family :: population_type.
+period_1970 :: temporal_period[type -> single_year_poverty].
+period_1980 :: temporal_period[type -> single_year_poverty].
+period_1990 :: temporal_period[type -> single_year_poverty].
+married_couple_family :: family.
+period_1969 :: temporal_period[type -> single_year_poverty].
+period_2000 :: temporal_period[type -> single_year_poverty].
+?F : farms_50_to_179_acres :- ?F : farm, ?F[size_acres -> ?S].
+?F : farms_50_to_69_acres :- ?F : farm, ?F[size_acres -> ?S].
+?F : farms_70_to_99_acres :- ?F : farm, ?F[size_acres -> ?S].
+?F : farms_100_to_139_acres :- ?F : farm, ?F[size_acres -> ?S].
+?F : farms_140_to_179_acres :- ?F : farm, ?F[size_acres -> ?S].
+?F : farms_180_to_499_acres :- ?F : farm, ?F[size_acres -> ?S].
+age_under_5 :: age_group.
+female_householder_family :: family.
+female_no_spouse_family :: female_householder_family.
+female_no_husband_family :: female_householder_family.
+male_householder_family :: family.
+male_no_wife_family :: male_householder_family.
+white_alone :: race_category.
+black_alone :: race_category.
+aian_alone :: race_category.  
+asian_alone :: race_category.
+nhopi_alone :: race_category. 
+hispanic :: ethnicity_category.
+hispanic_latino :: ethnicity_category.
+april_1_complete :: count_date.
+july_1_estimate :: count_date.
+estimates_base :: count_basis.
+race_characteristic :: population_characteristic.
+count_characteristic :: population_characteristic.
+population_count :: measurement_type.
+population_percentage :: measurement_type.
+complete_count :: measurement_method.
+estimate :: measurement_method.
+estimates_base :: measurement_method.
+measurement_year :: temporal_characteristic.
+?F : farms_500_to_999_acres :- ?F : farm, ?F[size_acres -> ?S].
+?F : farms_1000_to_1999_acres :- ?F : farm, ?F[size_acres -> ?S].
+?F : farms_2000_plus_acres :- ?F : farm, ?F[size_acres -> ?S].
+?F : farms_sales_under_2500 :- ?F : farm, ?F[sales_usd -> ?S].
+?F : farms_sales_2500_to_4999 :- ?F : farm, ?F[sales_usd -> ?S].
+?F : farms_sales_5000_to_9999 :- ?F : farm, ?F[sales_usd -> ?S].
+not_hispanic :: ethnicity_category.
+retail_trade :: industry_sector.
+?F : farms_sales_10000_to_24999 :- ?F : farm, ?F[sales_usd -> ?S].
+?F : farms_sales_25000_to_49999 :- ?F : farm, ?F[sales_usd -> ?S].
+?F : farms_sales_50000_to_99999 :- ?F : farm, ?F[sales_usd -> ?S].
+?F : farms_sales_100000_to_499999 :- ?F : farm, ?F[sales_usd -> ?S].
+?F : farms_sales_500000_or_more :- ?F : farm, ?F[sales_usd -> ?S].
+?F : farms_principal_occupation_farming :- ?F : farm, ?F[principal_occupation -> farming].
+?F : farms_no_off_farm_work :- ?F : farm, ?F[days_off_farm_work -> 0].
+?F : farms_any_off_farm_work :- ?F : farm, ?F[days_off_farm_work -> ?D].
+?F : farms_200plus_days_off_farm :- ?F : farm, ?F[days_off_farm_work -> ?D].
+?F : farms_under_10_acres :- ?F : farm, ?F[acres -> ?A].
+?F : farms_10_to_49_acres :- ?F : farm, ?F[acres -> ?A].
+?F : farms_50_to_69_acres :- ?F : farm, ?F[acres -> ?A].
+?F : farms_70_to_99_acres :- ?F : farm, ?F[acres -> ?A].
+?F : farms_100_to_139_acres :- ?F : farm, ?F[acres -> ?A].
+?F : farms_140_to_179_acres :- ?F : farm, ?F[acres -> ?A].
+?F : farms_500_to_999_acres :- ?F : farm, ?F[acres -> ?A].
+?F : farms_1992 :- ?F : farm, ?F[year -> 1992].
+?F : individual_family_farms :- ?F : farm, ?F[ownership_type -> individual_family].
+infant_death::death.
+infant_death[age_range -> under_one_year].
+live_birth::birth_event.
+business_establishment::organization.
+wholesale_trade::business_establishment.
+merchant_wholesaler::wholesale_trade.
+paid_employee::object.
+march_12_employee::paid_employee.
+?F : farms_1000_to_1999_acres :- ?F : farm, ?F[acres -> ?A].
+?F : farms_2000_plus_acres :- ?F : farm, ?F[acres -> ?A].
+?F : farming_principal_occupation :- ?F : farm_operator, ?F[principal_occupation -> farming].
+?F : off_farm_work_200_plus_days :- ?F : farm_operator, ?F[off_farm_work_days -> ?D].
+?P: total_population :- ?P:person.
+?P : ancestry_reporting_population :- ?P : person, ?P[reported_ancestry -> ?_].
+?P : population_1990 :- ?P : person, ?P[year -> 1990].
+?P : population_2000 :- ?P : person, ?P[year -> 2000].
+?P : population_2005_2009 :- ?P : person, ?P[year -> ?Y].
+?P : single_ancestry :- ?P : person, ?P[ancestry_type -> single].
+?P : multiple_ancestry :- ?P : person, ?P[ancestry_type -> multiple].
+?P : unspecified_ancestry :- ?P : person, ?P[ancestry_type -> not_specified].
+?P : unclassified_ancestry :- ?P : person, ?P[ancestry_type -> unclassified].
+?P : us_american_ancestry :- ?P : person, ?P[ancestry -> ?A].
+?P : ancestry_reported :- ?P : person, ?P[first_ancestry -> ?_].
+?P : american_ancestry :- ?P : person, ?P[ancestry -> 'American'].
+?P : arab_ancestry :- ?P : person, ?P[ancestry -> 'Arab'].
+?P : british_ancestry :- ?P : person, ?P[ancestry -> 'British'].
+?P : czech_ancestry :- ?P : person, ?P[ancestry -> 'Czech'].
+?P : danish_ancestry :- ?P : person, ?P[ancestry -> 'Danish'].
+?P : dutch_ancestry :- ?P : person, ?P[ancestry -> 'Dutch'].
+?P : english_ancestry :- ?P : person, ?P[ancestry -> 'English'].
+?P : european_ancestry :- ?P : person, ?P[ancestry -> 'European'].
+?P : french_canadian_ancestry :- ?P : person, ?P[ancestry -> 'French Canadian'].
+?P : german_ancestry :- ?P : person, ?P[ancestry -> 'German'].
+?P : greek_ancestry :- ?P : person, ?P[ancestry -> 'Greek'].
+?P : hungarian_ancestry :- ?P : person, ?P[ancestry -> 'Hungarian'].
+?P : irish_ancestry :- ?P : person, ?P[ancestry -> 'Irish'].
+?P : italian_ancestry :- ?P : person, ?P[ancestry -> 'Italian'].
+?P : lithuanian_ancestry :- ?P : person, ?P[ancestry -> 'Lithuanian'].
+?P : norwegian_ancestry :- ?P : person, ?P[ancestry -> 'Norwegian'].
+?P : polish_ancestry :- ?P : person, ?P[ancestry -> 'Polish'].
+?P : portuguese_ancestry :- ?P : person, ?P[ancestry -> 'Portuguese'].
+?P : population_2005_2009 :- ?P : person, ?P[year -> 2005_2009].
+?P : russian_ancestry :- ?P : person, ?P[ancestry -> 'Russian'].
+?P : scotch_irish_ancestry :- ?P : person, ?P[ancestry -> 'Scotch-Irish'].
+?P : scottish_ancestry :- ?P : person, ?P[ancestry -> 'Scottish'].
+?P : slovak_ancestry :- ?P : person, ?P[ancestry -> 'Slovak'].
+?P : subsaharan_african_ancestry :- ?P : person, ?P[ancestry -> 'Subsaharan African'].
+?P : swedish_ancestry :- ?P : person, ?P[ancestry -> 'Swedish'].
+?P : swiss_ancestry :- ?P : person, ?P[ancestry -> 'Swiss'].
+?P : ukrainian_ancestry :- ?P : person, ?P[ancestry -> 'Ukrainian'].
+?P : welsh_ancestry :- ?P : person, ?P[ancestry -> 'Welsh'].
+?P : west_indian_ancestry :- ?P : person, ?P[ancestry -> 'West Indian'].
+?P : other_ancestry :- ?P : person, ?P[ancestry -> 'Other'].
+?P : unclassified_ancestry :- ?P : person, ?P[ancestry -> 'Unclassified'].
+?P : not_reported_ancestry :- ?P : person, ?P[ancestry -> 'Not Reported'].
+?P : total_ancestries :- ?P : person, ?P[ancestry -> ?_].
+?P : us_american_ancestry :- ?P : person, ?P[ancestry -> 'United States or American'].
+?P : pop_1990 :- ?P : person, ?P[year -> 1990].
+?P : pop_2000 :- ?P : person, ?P[year -> 2000].
+?P : pop_2005_2009 :- ?P : person, ?P[year -> '2005-2009'].
+?P : french_except_basque_ancestry :- ?P : person, ?P[first_ancestry -> 'French'].
+?P : pop_1990 :- ?P : person, ?P[census_year -> 1990].
+?P : pop_2000 :- ?P : person, ?P[census_year -> 2000].
+?P : pop_2005_2009 :- ?P : person, ?P[census_year -> ?Y].
+?B : fdic_bank :- ?B : financial_institution, ?B[insurance_type -> 'FDIC'].
+?O : bank_office :- ?O : business_office, ?O[institution -> ?B].
+?O : bank_offices_1980 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1980, month -> 6, day -> 30]].
+?O : bank_offices_1985 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1985, month -> 6, day -> 30]].
+?O : bank_offices_1986 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1986, month -> 6, day -> 30]].
+?O : bank_offices_1987 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1987, month -> 6, day -> 30]].
+?O : bank_offices_1988 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1988, month -> 6, day -> 30]].
+?O : bank_offices_1989 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1989, month -> 6, day -> 30]].
+?O : bank_offices_1990 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1990, month -> 6, day -> 30]].
+?O : bank_offices_1991 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1991, month -> 6, day -> 30]].
+?O : bank_offices_1992 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1992, month -> 6, day -> 30]].
+?O : bank_offices_1993 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1993, month -> 6, day -> 30]].
+?O : bank_offices_1994 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1994, month -> 6, day -> 30]].
+?O : bank_offices_1995 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1995, month -> 6, day -> 30]].
+?O : bank_offices_1996 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1996, month -> 6, day -> 30]].
+?O : bank_offices_1997 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1997, month -> 6, day -> 30]].
+?O : bank_offices_1998 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1998, month -> 6, day -> 30]].
+?O : bank_offices_1999 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 1999, month -> 6, day -> 30]].
+?O : bank_offices_2000 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 2000, month -> 6, day -> 30]].
+?O : bank_offices_2001 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 2001, month -> 6, day -> 30]].
+?O : bank_offices_2002 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 2002, month -> 6, day -> 30]].
+?O : bank_offices_2003 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 2003, month -> 6, day -> 30]].
+?O : bank_offices_2004 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 2004, month -> 6, day -> 30]].
+?O : bank_offices_2005 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 2005, month -> 6, day -> 30]].
+?O : bank_offices_2006 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 2006, month -> 6, day -> 30]].
+?O : bank_offices_2007 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 2007, month -> 6, day -> 30]].
+?O : bank_offices_2008 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 2008, month -> 6, day -> 30]].
+?O : bank_offices_2009 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 2009, month -> 6, day -> 30]].
+?O : bank_offices_2010 :- ?O : bank_office, ?O[report_date -> ?D, ?D[year -> 2010, month -> 6, day -> 30]].
+?B : commercial_bank :- ?B : fdic_bank, ?B[institution_type -> 'Commercial'].
+?O : commercial_bank_office :- ?O : bank_office, ?O[institution -> ?B].
+?O : commercial_bank_offices_1997 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 1997, month -> 6, day -> 30]].
+?O : commercial_bank_offices_1998 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 1998, month -> 6, day -> 30]].
+?O : commercial_bank_offices_1999 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 1999, month -> 6, day -> 30]].
+?O : commercial_bank_offices_2000 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 2000, month -> 6, day -> 30]].
+?O : commercial_bank_offices_2001 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 2001, month -> 6, day -> 30]].
+?O : commercial_bank_offices_2002 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 2002, month -> 6, day -> 30]].
+?O : commercial_bank_offices_2003 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 2003, month -> 6, day -> 30]].
+?O : commercial_bank_offices_2004 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 2004, month -> 6, day -> 30]].
+?O : commercial_bank_offices_2005 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 2005, month -> 6, day -> 30]].
+?O : commercial_bank_offices_2006 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 2006, month -> 6, day -> 30]].
+?B : savings_bank :- ?B : fdic_bank, ?B[institution_type -> 'Savings'].
+?O : savings_bank_office :- ?O : bank_office, ?O[institution -> ?B].
+?O : commercial_bank_offices_2007 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 2007, month -> 6, day -> 30]].
+?O : commercial_bank_offices_2008 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 2008, month -> 6, day -> 30]].
+?O : commercial_bank_offices_2009 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 2009, month -> 6, day -> 30]].
+?O : commercial_bank_offices_2010 :- ?O : commercial_bank_office, ?O[report_date -> ?D, ?D[year -> 2010, month -> 6, day -> 30]].
+?O : savings_bank_offices_1990 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 1990, month -> 6, day -> 30]].
+?O : savings_bank_offices_1991 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 1991, month -> 6, day -> 30]].
+?O : savings_bank_offices_1992 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 1992, month -> 6, day -> 30]].
+?O : savings_bank_offices_1993 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 1993, month -> 6, day -> 30]].
+?O : savings_bank_offices_1994 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 1994, month -> 6, day -> 30]].
+?O : savings_bank_offices_1995 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 1995, month -> 6, day -> 30]].
+?O : savings_bank_offices_1996 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 1996, month -> 6, day -> 30]].
+?O : savings_bank_offices_1997 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 1997, month -> 6, day -> 30]].
+?O : savings_bank_offices_1998 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 1998, month -> 6, day -> 30]].
+?O : savings_bank_offices_1999 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 1999, month -> 6, day -> 30]].
+?O : savings_bank_offices_2000 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 2000, month -> 6, day -> 30]].
+?O : savings_bank_offices_2001 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 2001, month -> 6, day -> 30]].
+?O : savings_bank_offices_2002 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 2002, month -> 6, day -> 30]].
+?O : savings_bank_offices_2003 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 2003, month -> 6, day -> 30]].
+?O : savings_bank_offices_2004 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 2004, month -> 6, day -> 30]].
+?O : savings_bank_offices_2005 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 2005, month -> 6, day -> 30]].
+?O : savings_bank_offices_2006 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 2006, month -> 6, day -> 30]].
+?O : savings_bank_offices_2007 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 2007, month -> 6, day -> 30]].
+?O : savings_bank_offices_2008 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 2008, month -> 6, day -> 30]].
+?O : savings_bank_offices_2009 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 2009, month -> 6, day -> 30]].
+?O : savings_bank_offices_2010 :- ?O : savings_bank_office, ?O[report_date -> ?D, ?D[year -> 2010, month -> 6, day -> 30]].
+?P : housing_permit :- ?P : building_permit, ?P[type -> private_housing].
+?P : housing_permits_by_year :- ?P : housing_permit, ?P[year -> ?Y].
+building_permit::permit.
+private_housing::building_type.
+universe_19000::permit_universe.
+single_family::private_housing.
+?P: single_family_units :- ?P:housing_permit, ?P[year->?Y, type->single_family].
+universe_16000::permit_universe.
+universe_17000::permit_universe.
+?P : permits_by_universe :- ?P : housing_permit, ?P[universe -> ?U].
+?P : single_family_permits :- ?P : housing_permit, ?P[year -> ?Y, type -> single_family, universe -> ?U].
+?P: single_family_units_by_universe :- ?P:housing_permit, ?P[year->?Y, type->single_family, universe->?].
+five_or_more_family::private_housing.
+universe_20000::permit_universe.
+?P: five_or_more_family_units :- ?P:housing_permit, ?P[year->?Y, type->five_or_more_family].
+?P: single_family_units_by_universe :- ?P:housing_permit, ?P[year->?Y, type->single_family, universe->?U ].
+?P: five_or_more_family_units_by_universe :- ?P:housing_permit, ?P[year->?Y, type->five_or_more_family, universe->?U].
+?P : five_or_more_family_permits :- ?P : housing_permit, ?P[year -> ?Y, type -> five_or_more_family, universe -> ?U].
+business_establishment::establishment.
+private_nonfarm::establishment_type.
+employment::measure.
+private_nonfarm_employment::employment.
+?E : march_employment :- ?E : private_nonfarm_employment, ?E[period -> march_12].
+?E : march_employment_by_year :- ?E : march_employment, ?E[year -> ?Y].
+?E : forestry_establishments :- ?E : private_nonfarm_establishment, ?E[industry_sector -> forestry_fishing, classification_code -> 11].
+?E : forestry_employment :- ?E : private_nonfarm_employment, ?E[industry_sector -> forestry_fishing, classification_code -> 11, period -> march_12].
+?E : mining_establishments :- ?E : private_nonfarm_establishment, ?E[industry_sector -> mining, classification_code -> 21].
+?E : mining_employment :- ?E : private_nonfarm_employment, ?E[industry_sector -> mining, classification_code -> 21, year -> ?Y, classification_standard -> ?V, period -> march_12].
+?E : mining_establishments :- ?E : private_nonfarm_establishment, ?E[industry_sector -> mining, classification_code -> 21, year -> ?Y, classification_standard -> ?V].
+?E : utilities_establishments :- ?E : private_nonfarm_establishment, ?E[industry_sector -> utilities, classification_code -> 22, year -> ?Y, classification_standard -> ?V].
+?E : utilities_employment :- ?E : private_nonfarm_employment, ?E[industry_sector -> utilities, classification_code -> 22, year -> ?Y, classification_standard -> ?V, period -> march_12].
+?E : construction_establishments :- ?E : private_nonfarm_establishment, ?E[industry_sector -> construction, classification_code -> 23, year -> ?Y].
+?E : construction_establishments :- ?E : private_nonfarm_establishment, ?E[industry_sector -> construction, classification_code -> 23, year -> ?Y, classification_standard -> ?V].
+?E : construction_employment :- ?E : private_nonfarm_employment, ?E[industry_sector -> construction, classification_code -> 23, year -> ?Y, period -> march_12].
+?E : construction_employment :- ?E : private_nonfarm_employment, ?E[industry_sector -> construction, classification_code -> 23, year -> ?Y, classification_standard -> ?V, period -> march_12].
+?E : manufacturing_establishments_naics2002 :- ?E : private_nonfarm_establishment, ?E[industry_sector -> manufacturing, classification_code -> 31, year -> ?Y, classification_standard -> naics_2002].
